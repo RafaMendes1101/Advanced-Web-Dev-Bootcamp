@@ -1,0 +1,48 @@
+.box {
+	width: 100px;
+	height: 100px;
+	line-height: 100px;
+	text-align: center;
+	border: 2px solid #2c3e50;
+	background-color: #1abc9c;
+	color: #ecf0f1;
+	border-radius: 20px;
+}
+
+
+/*.animated {
+	transition-property: transform, border-radius;
+	transition-duration: 1s, 1s;
+	transition-delay: 3s, 1s;
+}
+
+.boring:hover {
+	background: #e74c3c;
+	transform-origin: bottom left;
+	transform: scale(2) rotate(45deg);
+	border-radius: 50px;
+}
+
+*/
+
+.animated {
+	transition-property: transform, border-radius, background-color 0.6s;
+	transition-duration: 2s, 2s;
+	transition-timing-function: ease-out; 
+}
+
+
+.box:hover {
+	transform: translateX(300px);
+	background-color: teal;
+}
+
+/*shorthand transitions*/
+
+/*transition: <property> <duartion> <timing-function> <time-delay>*/
+
+.no {
+	transition: transform 2s ease-out 1s, background-color 0.5s linear;
+}
+
+
