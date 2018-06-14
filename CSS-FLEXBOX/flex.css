@@ -1,0 +1,25 @@
+body {
+	margin: 0;
+}
+.container {
+	display: flex;	
+	flex-wrap: wrap;
+	flex-basis: 300px;
+}
+
+.box {
+	background: #cc0042;
+	flex: 1 1 250px;
+	color: white;
+	font-family: Helvetica;
+	padding: 20px;
+	transition: 0.2s background;
+}
+
+.middle {
+	background: #b20009;
+}
+
+.box:hover {
+	background: #ff0052;
+}

@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900");
+
+.container {
+	display: flex;
+	border: 5px solid black;
+	/*align-items: flex-start;*/
+	height: 100vh;
+	flex-wrap: wrap;
+	align-content: center;
+
+}
+
+div.box {
+	width: 300px;
+	text-align: center;
+	font-family: Lato;
+	font-weight: 400;
+	font-size: 60px;
+	color: black;
+}
+
+.box-1 {
+	background: white;
+	/*font-size: 30px;*/
+}
+
+.box-2 {
+	background: yellow;
+	/*font-size: 50px;*/
+}
+
+.box-3 {
+	background: lightblue;
+	/*font-size: 40px;*/
+}
+
+.box-4 {
+	background: blue;
+	/*font-size: 80px;*/
+}
+
+.box-5 {
+	background: teal;
+	/*font-size: 100px;*/
+}
+
+.box-6 {
+	background: orange;
+	/*font-size: 120px;*/
+}
+
+.box-7 {
+	background: pink;
+	/*font-size: 90px;*/
+}
+
+.box-8 {
+	background: red;
+	/*font-size: 110px;*/
+}
+
+.box-9 {
+	background: lightgrey;
+	/*font-size: 60px;*/
+}
+
+.box-10 {
+	background: purple;
+	/*font-size: 80px;*/
+}

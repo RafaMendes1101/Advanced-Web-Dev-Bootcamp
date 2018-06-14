@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900");
+body {
+	font-family: Lato;
+	background: black;
+	margin: 0;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	min-height: 100vh;
+}
+a {
+text-decoration: none;
+color: black;
+}
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+main > *, header, footer {
+	margin: 4px;
+	padding: 5px;
+	border-radius: 7px;
+}
+main {
+	display: flex;
+	flex-basis: 800px;
+}
+
+article {
+	flex: 4 1 60%;
+	background: #cee1e8;
+}
+
+aside {
+	flex: 1 1 20%;
+	background: #44bae5;
+}
+
+nav {
+	flex: 1 1 20%;
+	background: #a3a6a8;
+	order: -1;
+}
+
+header, footer {
+	background: #56c477;
+	height: 10vh;
+}
+
+
+@media all and (max-width: 640px) {
+	main {
+		flex-direction: column;
+		flex-grow: 1;
+	}
+
+	nav {
+		order: 0;
+	}
+}

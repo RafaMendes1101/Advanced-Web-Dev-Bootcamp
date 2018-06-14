@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900");
+
+body{
+	background: #8daab2;
+	margin: 0;
+}
+.container {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	border: 1px solid #8cbecc;
+	height: 100vh;
+	width: 25vw;
+	background: #235968;
+}
+
+.div {
+	font-size: 14px;
+	color: white;
+	text-align: left;
+	padding: 10px;
+	font-family: lato;
+	font-weight: 400;
+
+}
+
+#dv1::before {
+	content: "Messages";
+}
+
+#dv2::before {
+	content: "Friends";
+}
+
+#dv3::before {
+	content: "User Profile";
+}
+
+#dv4::before {
+	content: "Settings";
+}
+
+#dv5::before {
+	content: "Questions?";
+}

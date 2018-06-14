@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900");
+
+.container {
+	display: flex;
+	/*	flex-direction: row-reverse;*/
+	/*flex-direction: column;*/
+	/*align-items: flex-start;*/
+	border: 20px solid black;
+	height: 100vh;
+		/*width: 100vw;*/
+}
+
+.div {
+	font-size: 100px;
+	color: white;
+	padding: 10px;
+	text-align: center;
+	font-family: lato;
+	font-weight: 400;
+	box-sizing: border-box;
+}
+
+.d1::before{
+	background: purple;
+	content: "1";
+	font-size: 40px;
+}
+.d2::before{
+	background: lightblue;
+	content: "2";
+	font-size: 80px;
+}
+.d3::before{
+	background: green;
+	content: "3";
+	font-size: 70px;
+}
+.d4::before{
+	background: yellow;
+	content: "4";
+	font-size: 100px;
+}
+.d5::before{
+	background: orange;
+	content: "5";
+	font-size: 50px;
+}

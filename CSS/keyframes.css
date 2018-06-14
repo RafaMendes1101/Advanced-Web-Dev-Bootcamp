@@ -1,0 +1,32 @@
+@keyframes rainbowtext {
+	0%{
+		color: red;
+	}
+	25%{
+		color: orange;
+	}
+	50%{
+		color: yellow;
+		font-size: 30px;
+		transform: translateX(200px);
+	}
+	75%{
+		color: green;
+		font-size: 40px;
+	}
+	85%{
+		color: blue;
+		font-size: 25px;
+	}
+	100%{
+		color: purple;
+	}
+}
+
+p {
+	animation-name: rainbowtext;
+	animation-duration: 5s;
+	animation-timing-function: linear;
+	animation-delay: 0s;
+	animation-iteration-count: infinite;
+}
