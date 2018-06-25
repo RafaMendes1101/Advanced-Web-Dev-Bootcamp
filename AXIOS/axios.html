@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AXIOS Intro</title>
+	<script type="text/javascript" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+	<button>CLICK</button>
+	<section id="comments"></section>
+	<script type="text/javascript">
+		var url = "https://opentdb.com/api.php?amount=1";
+		axios.get(url)
+		.then(function(res){
+			console.log(res.data.results[0].question);
+		})
+		.catch(function(){
+			console.log("error");
+		})
+
+		var btn = document.querySelector("button");
+		var section = document.querySelector("section");
+
+		btn.addEventListener("click", sendRequest);
+
+		function sendRequest(){
+			axios.get("https://jsonplaceholder.typicode.com/comments", {
+				params: {
+					postId: 1
+				}
+			})
+			.then(addComments)
+			.catch(handleErrors)
+		}
+
+		function addComments(res){
+			res.data.forEach(function(comment){
+				console.log(comment);
+				appendComment(comment);
+			});
+		}
+
+		function appendComment(comment){
+			var newP = document.createElement("p");
+			newP.innerText = comment.email;
+			section.appendChild(newP);
+		}
+
+		function handleErrors(err) {
+			if(err.response) {
+				console.log("Problem With Response", err.response.status);
+			} else if (err.request){
+				console.log("Problem with Request");
+			} else {
+				console.log("Error", err.message);
+			}
+		}
+	</script>
+</body>
+</html>

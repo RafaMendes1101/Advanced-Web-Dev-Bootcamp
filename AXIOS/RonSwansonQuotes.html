@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ron Swanson Quote Generator</title>
+
+	<script type="text/javascript" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script	src="https://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="ron.css">
+</head>
+<body>
+	<h1>Ron Swanson Quote Generator</h1>
+	<p>(4 ways of writing AJAX requests)</p>
+	<section class="container">
+		<button id="XHR">XHR</button>
+		<button id="FETCH">FETCH</button>
+		<button id="JQUERY">JQUERY</button>
+		<button id="AXIOS">AXIOS</button>
+	</section>
+	<p id="quote">Quote Goes Here...</p>
+
+	<script type="text/javascript">
+		//XHR request
+		var url = "https://ron-swanson-quotes.herokuapp.com/v2/quotes";
+		var btnxhr = document.getElementById("XHR");
+		var quote = document.querySelector("#quote");
+		btnxhr.addEventListener("click", function(){
+			var XHR = new XMLHttpRequest();
+
+			XHR.onreadystatechange = function() {
+				if(XHR.readyState == 4) {
+					if(XHR.status == 200) {						
+						quote.innerText = JSON.parse(XHR.responseText)[0];
+					} else {
+						console.log("There was a problem!");
+					}
+				}
+			}
+
+			XHR.open("GET", url);
+			XHR.send();
+		});
+		// FETCH Request
+		var fetchBtn = document.getElementById("FETCH");
+
+		fetchBtn.addEventListener("click", function(){
+			fetch(url)
+			.then(handleErrors)
+			.then(updateQuote)
+			.catch(displayErrors);
+		});
+
+
+		function updateQuote (req) {
+			req.json().then(function(data){
+				quote.innerText = data[0];
+			})			
+		}
+
+		function handleErrors (response){
+			if(response.ok == false){
+				throw Error(response.status);
+			}
+			return response;
+		}
+
+
+		function displayErrors(err){
+			console.log("INSIDE displayErrors")
+			console.log(err);
+		}
+
+		// JQUERY AJAX
+
+		$("#JQUERY").click(function(){
+			$.getJSON(url)
+			.done(function(data){
+				console.log(data[0]);
+				$("#quote").text(data[0]);
+			})
+			.fail(function(){
+				console.log("DEU RUIM!");
+			});
+		});
+
+		// AXIOS AJAX
+		$("#AXIOS").click(function(){
+			axios.get(url)
+			.then(function(res){
+				$("#quote").text(res.data[0]);
+				console.log(res);
+			})
+			.catch(function(){
+				console.log("ERROR");
+			})
+		});
+	</script>
+</body>
+</html>

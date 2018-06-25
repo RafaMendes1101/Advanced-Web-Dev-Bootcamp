@@ -1,13 +1,27 @@
-var XHR = new XMLHttpRequest();
 
-XHR.onreadystatechange = function() {
-	if (XHR.readyState == 4){
-		if (XRH.status == 200){
-			console.log(XHR.responseText);
-		} else {
-			console.log("Problem");
-		}
-	}
-}
-XHR.open("GET", "https://api.github.com/zen");
-XHR.send();
+
+var btn = document.querySelector("#btn");
+var img = document.querySelector("#photo");
+
+//listen for clicks
+btn.addEventListener("click", function(){
+  //make the request
+  var XHR = new XMLHttpRequest();
+  
+  XHR.onreadystatechange = function(){
+    if(XHR.readyState == 4 && XHR.status == 200) {
+      var url = JSON.parse(XHR.responseText).message;
+      img.src = url;
+    }
+  }
+  
+  XHR.open("GET","https://dog.ceo/api/breeds/image/random");
+  XHR.send();
+})
+
+
+var bpi = document.querySelector("#bpi");
+var time = document.getLocalDate();
+
+
+console.log(time);

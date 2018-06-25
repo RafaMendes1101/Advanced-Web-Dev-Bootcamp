@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Random User API</title>
+	<link rel="stylesheet" type="text/css" href="randomuser.css">
+</head>
+<body>
+	<h1 class="title"> Random User Generator</h1>
+	<div class="user-profile">
+		<img id="avatar" src="" />
+		<div id="fullname">Jon Snow</div>
+		<div id="username">
+			kingofnorth
+		</div>
+		<div class="description">
+			<div>Email: <span id="email">jon@hotmail.com</span></div>
+			<div>City: <span id="city">Winterfell</span></div>
+		</div>
+
+		<div class="footer">
+			<button id="btn">Next User!</button>
+			<script type="text/javascript">
+				var btn = document.getElementById("btn");
+				var url = 'https://randomuser.me/api/1.2/';
+
+				var fname = document.getElementById("fullname");
+				var username = document.getElementById("username");
+				var pic = document.getElementById("avatar");
+				var email = document.getElementById("email");
+				var city = document.getElementById("city");
+
+				btn.addEventListener("click", function(){
+					fetch('https://randomuser.me/api/1.2/')
+					.then(handleErrors)
+					.then(parseJSON)
+					.then(updateProfile)
+					.catch(displayErrors);
+				});
+
+				function handleErrors (res){
+					if(!res.ok){
+						throw Error(res.status);
+					}
+					return res;
+				}
+
+				function parseJSON (res){
+					return res.json().then(function(parsedData){
+						return parsedData.results[0];
+					})
+				}
+
+				function updateProfile(data){
+					var fullname = data.name.first + " " + data.name.last;
+					fname.innerText = fullname;
+					pic.src = data.picture.medium;
+					username.innerText = data.login.username;
+					city.innerText = data.location.city;
+					email.innerText = data.email;
+				}
+
+				function displayErrors(err){
+					console.log("INSIDE displayErrors")
+					console.log(err);
+				}
+
+			</script>
+		</div>
+	</div>
+</body>
+</html>

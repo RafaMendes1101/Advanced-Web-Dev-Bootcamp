@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AJAX: GET-POST-GETSJON shorthands</title>
+	
+	<script	src="https://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	crossorigin="anonymous"></script>
+</head>
+<body>
+	<button id="getBtn">GET()</button>
+	<button id="postBtn">POST()</button>
+	<button id="getJSONBtn">GETJSON()</button>
+
+	<script type="text/javascript">
+		$("#getBtn").click(function(){
+			$.get("https://api.github.com/users/colt")
+			.done(function(data){
+				console.log(data);
+			})
+			.fail(function(){
+				console.log("ERROR");
+			});
+		});
+		$("#postBtn").click(function(){
+			var data = {name: "Charlie", city: "Florence"};
+			$.post("www.catsarecoolandsoaredogs.com", data)
+			.done(function(data){
+				console.log("Hi!");
+			})
+			.fail(function(){
+				console.log("ERROR!");
+			});
+		});
+		$("#getJSONBtn").click(function(){
+			$.getJSON("https://api.github.com/users/colt")
+			.done(function(data){
+				console.log(data);
+			})
+			.fail(function(){
+				console.log("PROBLEM!");
+			})
+		});
+	</script>
+
+</body>
+</html>

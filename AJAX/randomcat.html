@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Random Cat</title>
+	<script	src="https://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	crossorigin="anonymous"></script>
+</head>
+<body>
+	<button id="cat">Get Random Cat</button>
+	<img id="dog" src="" alt="cat">
+	<script type="text/javascript">
+		$("#cat").click(function(){
+			$.getJSON("https://dog.ceo/api/breeds/image/random")
+			.done(function(data){
+				console.log(data.message);
+				$("#dog").attr("src", data.message);
+			})
+			.fail(function(){
+				console.log("DEU RUIM!");
+			});
+		})
+	</script>
+
+</body>
+</html>
