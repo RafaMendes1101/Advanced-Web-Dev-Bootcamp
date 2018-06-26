@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Jasmine Pending Spec</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.6.2/jasmine.css">
+</head>
+<body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.6.2/jasmine.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.6.2/jasmine-html.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.6.2/boot.js"></script>
+
+	<script type="text/javascript">
+		describe("Pending specs", function(){
+
+			xit("can start with an xit", function(){
+				expect(true).toBe(true);
+			});
+
+			it("is a pending test if there is no callback function");
+
+			it("is pending if the pending function is invoked inside the callback", function(){
+				expect(2).toBe(2);
+				pending();
+			});
+
+		});
+	</script>
+
+</body>
+</html>

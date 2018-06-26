@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JASMINE Clock</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.6.2/jasmine.css">
+</head>
+<body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.6.2/jasmine.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.6.2/jasmine-html.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.6.2/boot.js"></script>
+
+	<script type="text/javascript">
+		describe("a simple test timeOut", function(){
+			var sample;
+			beforeEach(function(){
+				sample = jasmine.createSpy("sampleFunction");
+				jasmine.clock().install();
+			});
+
+			afterEach(function(){
+				jasmine.clock().uninstall();
+			});
+
+			it("is only invoked after 1000ms", function(){
+				setTimeout(function(){
+					sample();
+				},1000);
+				jasmine.clock().tick(999);
+				expect(sample).not.toHaveBeenCalled();
+				jasmine.clock().tick(1);
+				expect(sample).toHaveBeenCalled();
+			});
+		});
+
+		describe("a simple test setInterval", function(){
+			var dummyFunction;
+			beforeEach(function(){
+				dummyFunction = jasmine.createSpy("dummyFunction");
+				jasmine.clock().install();
+			});
+			afterEach(function(){
+				jasmine.clock().uninstall();
+			});
+
+			it("checks to see the number of times the function is invoked", function(){
+				setInterval(function(){
+					dummyFunction();
+				}, 1000);
+				jasmine.clock().tick(999);
+				expect(dummyFunction.calls.count()).toBe(0);
+				jasmine.clock().tick(1000);
+				expect(dummyFunction.calls.count()).toBe(1);
+				jasmine.clock().tick(1);
+				expect(dummyFunction.calls.count()).toBe(2);
+			});
+		})
+	</script>
+</body>
+</html>
